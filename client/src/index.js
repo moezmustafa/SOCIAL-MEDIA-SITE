@@ -18,11 +18,6 @@ import {
 import storage from "redux-persist/lib/storage";
 import { PersistGate } from "redux-persist/integration/react";
 
-
-// this line is basically responsible to store the data inthe local storage 
-// and not in the session storage , that way this data will stay until the user 
-//has cleared the cache
-
 const persistConfig = { key: "root", storage, version: 1 };
 const persistedReducer = persistReducer(persistConfig, authReducer);
 const store = configureStore({
@@ -34,9 +29,6 @@ const store = configureStore({
       },
     }),
 });
-
-
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -1,50 +1,45 @@
 import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema(
-    {
-        firstName: {
-            type: String,
-            required: true,
-            min: 2,
-            max: 50,
+  {
+    firstName: {
+      type: String,
+      required: true,
+      min: 2,
+      max: 50,
     },
-        lastName: {
-            type: String,
-            required: true,
-            min: 2,
-            max: 50,
+    lastName: {
+      type: String,
+      required: true,
+      min: 2,
+      max: 50,
     },
-        email: {
-            type: String,
-            required: true,
-            max: 50,
-            unique: true,
+    email: {
+      type: String,
+      required: true,
+      max: 50,
+      unique: true,
     },
-        password: {
-            type: String,
-            required: true,
-            min: 6,
+    password: {
+      type: String,
+      required: true,
+      min: 5,
     },
-    profilePicture: {
-        type: String,
-        default: "",
+    picturePath: {
+      type: String,
+      default: "",
     },
     friends: {
-        type: Array,
-        default: [],
+      type: Array,
+      default: [],
     },
     location: String,
     occupation: String,
     viewedProfile: Number,
     impressions: Number,
+  },
+  { timestamps: true }
+);
 
-
-}, { timestamps: true });
-
-// timestamps give use date created and date updated
-
-
-//
-
-const  User = mongoose.model("User", UserSchema);
+const User = mongoose.model("User", UserSchema);
 export default User;
