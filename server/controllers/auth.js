@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 // this send the user a web token for the authhorization
 import jwt from 'jsonwebtoken';
 
-import User from '../models/user.js';
+import User from '../models/User.js';
 
 // Register user  
 //asnycronous , call mongoose database 
