@@ -15,11 +15,24 @@ import authRoute from "./routes/auth.js"; // this is the route for the auth
 
 import userRoutes from "./routes/users.js";
 
+// video tag 1:13:09 
+
+
 import { register } from "./controllers/auth.js";
+
+import { createPost } from "./controllers/posts.js";
+
+import { verifyToken } from "./middleware/auth.js";
 
 import postRoutes from "./routes/posts.js";
 
-import { createPost } from "./controllers/posts.js";
+//after 1:36:00
+
+import User from "./models/User.js";
+import Post from "./models/Post.js";
+import { users, posts } from "./data/index.js";
+
+
 
 
 
@@ -52,11 +65,14 @@ const storage = multer.diskStorage({
 
   /* ROUTES WITH FILES*/
    app.post("/auth/register", upload.single("picture"), register);
+   app.post("/posts", verifyToken, upload.single("picture"), createPost);
  
 
 // ROUTES
 app.use("/users", userRoutes);
+app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
+
 
 
 
@@ -70,9 +86,17 @@ mongoose
   .then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
+
+
+    // the lines below will manually add the data to the firebase data base
     /* ADD DATA ONE TIME */
     // User.insertMany(users);
     // Post.insertMany(posts);
+  
+    // the lines below will manually add the data to the firebase data base
+
+
+
   })
   .catch((error) => console.log(`${error} did not connect`));
 
