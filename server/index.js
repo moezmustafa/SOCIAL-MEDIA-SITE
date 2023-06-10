@@ -26,6 +26,12 @@ import { verifyToken } from "./middleware/auth.js";
 
 import postRoutes from "./routes/posts.js";
 
+//after 1:36:00
+
+import User from "./models/User.js";
+import Post from "./models/Post.js";
+import { users, posts } from "./data/index.js";
+
 
 
 
@@ -80,9 +86,17 @@ mongoose
   .then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
+
+
+    // the lines below will manually add the data to the firebase data base
     /* ADD DATA ONE TIME */
     // User.insertMany(users);
     // Post.insertMany(posts);
+  
+    // the lines below will manually add the data to the firebase data base
+
+
+
   })
   .catch((error) => console.log(`${error} did not connect`));
 
