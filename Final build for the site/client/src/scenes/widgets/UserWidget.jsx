@@ -1,16 +1,17 @@
+import React from 'react';
 import {
   ManageAccountsOutlined,
   EditOutlined,
   LocationOnOutlined,
   WorkOutlineOutlined,
-} from "@mui/icons-material";
-import { Box, Typography, Divider, useTheme } from "@mui/material";
-import UserImage from "components/UserImage";
-import FlexBetween from "components/FlexBetween";
-import WidgetWrapper from "components/WidgetWrapper";
-import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+} from '@mui/icons-material';
+import { Box, Typography, Divider, useTheme } from '@mui/material';
+import UserImage from 'components/UserImage';
+import FlexBetween from 'components/FlexBetween';
+import WidgetWrapper from 'components/WidgetWrapper';
+import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const UserWidget = ({ userId, picturePath }) => {
   const [user, setUser] = useState(null);
@@ -23,7 +24,7 @@ const UserWidget = ({ userId, picturePath }) => {
 
   const getUser = async () => {
     const response = await fetch(`http://localhost:3001/users/${userId}`, {
-      method: "GET",
+      method: 'GET',
       headers: { Authorization: `Bearer ${token}` },
     });
     const data = await response.json();
@@ -64,9 +65,9 @@ const UserWidget = ({ userId, picturePath }) => {
               color={dark}
               fontWeight="500"
               sx={{
-                "&:hover": {
+                '&:hover': {
                   color: palette.primary.light,
-                  cursor: "pointer",
+                  cursor: 'pointer',
                 },
               }}
             >
@@ -118,7 +119,7 @@ const UserWidget = ({ userId, picturePath }) => {
           Social Profiles
         </Typography>
 
-        <FlexBetween gap="1rem" mb="0.5rem">
+        {/* <FlexBetween gap="1rem" mb="0.5rem">
           <FlexBetween gap="1rem">
             <img src="../assets/twitter.png" alt="twitter" />
             <Box>
@@ -129,9 +130,9 @@ const UserWidget = ({ userId, picturePath }) => {
             </Box>
           </FlexBetween>
           <EditOutlined sx={{ color: main }} />
-        </FlexBetween>
+        </FlexBetween> */}
 
-        <FlexBetween gap="1rem">
+        {/* <FlexBetween gap="1rem">
           <FlexBetween gap="1rem">
             <img src="../assets/linkedin.png" alt="linkedin" />
             <Box>
@@ -142,6 +143,52 @@ const UserWidget = ({ userId, picturePath }) => {
             </Box>
           </FlexBetween>
           <EditOutlined sx={{ color: main }} />
+        </FlexBetween> */}
+
+        {/* Add the buttons for LinkedIn and Twitter */}
+        <FlexBetween gap="1rem" my="1rem">
+          <button
+            onClick={() => {
+              window.open('https://www.linkedin.com/in/bahria-link-65774827a/', '_blank');
+            }}
+            style={{
+              backgroundColor: '#0A66C2',
+              color: '#FFFFFF',
+              padding: '0.5rem 1rem',
+              borderRadius: '0.5rem',
+              border: 'none',
+              cursor: 'pointer',
+              fontSize: '1rem',
+            }}
+          >
+            <img
+              src="../assets/linkedin.png"
+              alt="linkedin"
+              style={{ marginRight: '0.5rem' }}
+            />
+            LinkedIn
+          </button>
+          <button
+            onClick={() => {
+              window.open('https://twitter.com/Bahriasocial', '_blank');
+            }}
+            style={{
+              backgroundColor: '#1DA1F2',
+              color: '#FFFFFF',
+              padding: '0.5rem 1rem',
+              borderRadius: '0.5rem',
+              border: 'none',
+              cursor: 'pointer',
+              fontSize: '1rem',
+            }}
+          >
+            <img
+              src="../assets/twitter.png"
+              alt="twitter"
+              style={{ marginRight: '0.5rem' }}
+            />
+            Twitter
+          </button>
         </FlexBetween>
       </Box>
     </WidgetWrapper>
